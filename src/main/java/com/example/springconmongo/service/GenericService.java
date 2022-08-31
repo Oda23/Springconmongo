@@ -11,12 +11,14 @@ import java.util.List;
  *
  * @author ISTA
  */
-public interface GenericService <T, ID extends Serializable> {
-    public T save(T entity);
-    public T findById(ID id);
-    public List<T> findByAll();
-    public void delete(ID id);
-            
+public interface GenericService<T, ID extends Serializable> {
 
-    
+    public T save(T Entity);
+
+    public T findById(ID id);
+
+    public List<T> findByAll();
+
+    public void delete(ID id);
+
 }

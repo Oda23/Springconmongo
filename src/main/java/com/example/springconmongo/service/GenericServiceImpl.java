@@ -5,6 +5,8 @@
 package com.example.springconmongo.service;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import org.springframework.data.repository.CrudRepository;
 
@@ -12,6 +14,7 @@ import org.springframework.data.repository.CrudRepository;
  *
  * @author ISTA
  */
+
 public abstract class GenericServiceImpl<T, ID extends Serializable> implements GenericService<T, ID>{
     
     public abstract CrudRepository<T, ID> getDao();
@@ -29,6 +32,22 @@ public abstract class GenericServiceImpl<T, ID extends Serializable> implements 
         }
         return null;
     }
+
+    @Override
+    public List<T> findByAll() {
+        List<T> List = new ArrayList<>();
+        getDao().findAll().forEach(obj -> List.add(obj));
+        return List;
+    }
+
+    @Override
+    public void delete(ID id) {
+        getDao().deleteById(id);
+    }
+    
+    
+    
+    
     
     
     
